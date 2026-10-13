@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>营销作品集</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:#fff;
+  color:#1a1a1a;
+  font-family:-apple-system,"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- 手绘装饰 ---------- */
+.squiggle{display:block;margin:0 auto;color:#1a1a1a;opacity:.6}
+.squiggle-light{opacity:.3}
+.doodle{position:absolute;pointer-events:none}
+
+/* 手绘下划线 */
+.hand-underline{position:relative}
+.hand-underline:after{
+  content:"";position:absolute;left:0;right:0;bottom:-8px;height:12px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 12'%3E%3Cpath d='M2 8 Q 30 2, 60 7 T 120 6 T 180 8' fill='none' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-size:contain;background-position:center;
+  opacity:.5;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1100px;margin:0 auto;padding:0 40px}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.95);backdrop-filter:blur(10px);border-bottom:1px solid #f0f0f0}
+nav .bar{max-width:1100px;margin:0 auto;padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between}
+nav .brand{font-size:15px;font-weight:500;letter-spacing:.02em}
+nav ul{display:flex;gap:32px;list-style:none}
+nav ul a{font-size:14px;color:#666;transition:color .2s}
+nav ul a:hover{color:#1a1a1a}
+@media(max-width:768px){nav ul{gap:20px}nav ul a{font-size:13px}}
+
+/* ---------- hero ---------- */
+.hero{padding:100px 0 60px;text-align:center}
+.hero .kicker{font-size:11px;letter-spacing:.3em;color:#999;text-transform:uppercase;margin-bottom:24px}
+.hero h1{font-size:clamp(40px,8vw,88px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:16px;display:inline-block}
+.hero h1{position:relative}
+.hero h1:after{
+  content:"";position:absolute;left:-5%;right:-5%;bottom:-12px;height:20px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 20'%3E%3Cpath d='M8 14 Q 40 6, 80 12 T 160 10 T 210 14' fill='none' stroke='%231a1a1a' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-size:contain;background-position:center;
+  opacity:.4;
+}
+.hero .sub{font-size:15px;color:#666;letter-spacing:.08em;margin-bottom:40px}
+.hero .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.hero .chips a{font-size:13px;padding:8px 18px;border:1px solid #e5e5e5;border-radius:999px;color:#555;transition:all .2s}
+.hero .chips a:hover{border-color:#1a1a1a;color:#1a1a1a}
+
+/* ---------- landing ---------- */
+.landing{display:grid;grid-template-columns:minmax(0,320px) 1fr;gap:80px;align-items:center;margin-top:60px}
+@media(max-width:860px){.landing{grid-template-columns:1fr;gap:40px;justify-items:center}}
+
+.photo{position:relative;justify-self:center}
+.photo .polaroid{
+  background:#fff;padding:10px 10px 40px;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  border:1px solid #f0f0f0;
+  transform:rotate(-1.5deg);
+  position:relative;
+}
+.photo .polaroid:before{
+  content:"";position:absolute;inset:-6px;border:1.5px solid #1a1a1a;border-radius:4px;opacity:.15;pointer-events:none;
+}
+.photo .polaroid img{width:100%}
+.photo .cap{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-size:12px;color:#888}
+.photo .badge{
+  position:absolute;right:-12px;top:-12px;width:68px;height:68px;border-radius:50%;
+  background:#fff;color:#1a1a1a;
+  border:1.5px solid #1a1a1a;
+  display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;line-height:1.3;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+
+.branches{display:grid;gap:16px}
+.branch{position:relative;display:flex;align-items:center;gap:16px;padding:20px 22px;border:1.5px solid #f0f0f0;border-radius:12px;transition:all .2s}
+.branch:hover{border-color:#1a1a1a;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.branch .no{font-size:12px;color:#999;flex:none;font-weight:500}
+.branch .txt{flex:1}
+.branch .txt h3{font-size:20px;font-weight:600;margin-bottom:4px}
+.branch .txt p{font-size:12px;color:#888}
+.branch .arrow{
+  font-size:20px;color:#ccc;transition:transform .2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12 L 18 12 M 12 6 L 18 12 L 12 18' fill='none' stroke='%23ccc' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;width:20px;height:20px;
+}
+.branch:hover .arrow{
+  transform:translateX(4px);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12 L 18 12 M 12 6 L 18 12 L 12 18' fill='none' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* ---------- section ---------- */
+section{padding:80px 0;position:relative}
+section + section:before{
+  content:"";position:absolute;top:0;left:10%;right:10%;height:1px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='2'%3E%3Cpath d='M0 1 L 200 1' fill='none' stroke='%23e8e8e8' stroke-width='1' stroke-dasharray='4 6'/%3E%3C/svg%3E");
+  background-repeat:repeat-x;
+}
+.sec-head{margin-bottom:48px;text-align:center;position:relative}
+.sec-head .no{font-size:11px;letter-spacing:.2em;color:#999;text-transform:uppercase;margin-bottom:12px}
+.sec-head h2{
+  font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.01em;margin-bottom:12px;
+  display:inline-block;position:relative;
+}
+.sec-head h2:after{
+  content:"";position:absolute;left:-8%;right:-8%;bottom:-10px;height:16px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 16'%3E%3Cpath d='M6 10 Q 30 4, 60 9 T 120 8 T 190 10' fill='none' stroke='%231a1a1a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-size:contain;background-position:center;
+  opacity:.35;
+}
+.sec-head p{font-size:14px;color:#666;max-width:560px;margin:0 auto}
+
+/* ---------- intro ---------- */
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:768px){.intro-grid{grid-template-columns:1fr}}
+
+/* 虚拟形象区域 */
+.avatar-section{position:relative;display:flex;justify-content:center;align-items:center;min-height:500px}
+.avatar-wrapper{position:relative;width:320px}
+.avatar-img{width:100%;height:auto;display:block}
+
+/* 泡泡 */
+.bubble{
+  position:absolute;
+  background:#fff;
+  border:1.5px solid #1a1a1a;
+  border-radius:999px;
+  padding:10px 18px;
+  box-shadow:2px 3px 0 rgba(0,0,0,.08);
+  font-size:13px;
+  white-space:nowrap;
+  animation:float 3s ease-in-out infinite;
+}
+.bubble:after{
+  content:"";position:absolute;width:8px;height:8px;background:#fff;border:1.5px solid #1a1a1a;
+  transform:rotate(45deg);
+}
+.bubble-name{top:10%;left:-30px;animation-delay:0s}
+.bubble-name:after{bottom:-5px;left:50%;transform:translateX(-50%) rotate(45deg);border-top:none;border-left:none}
+.bubble-name .bubble-text{font-size:15px;font-weight:600;display:block}
+.bubble-name .bubble-pinyin{font-size:11px;color:#888;display:block;margin-top:2px}
+
+.bubble-mbti{top:25%;right:-40px;animation-delay:.5s}
+.bubble-mbti:after{bottom:-5px;right:20px;transform:rotate(45deg);border-top:none;border-right:none}
+.bubble-mbti .bubble-label{font-size:10px;color:#888;display:block}
+.bubble-mbti .bubble-value{font-size:18px;font-weight:700;display:block}
+
+.bubble-trait{animation-delay:1s}
+.bubble-trait:nth-child(4){top:55%;left:-50px;animation-delay:1s}
+.bubble-trait:nth-child(4):after{top:50%;right:-5px;transform:translateY(-50%) rotate(45deg);border-top:none;border-right:none}
+.bubble-trait:nth-child(5){top:70%;right:-30px;animation-delay:1.5s}
+.bubble-trait:nth-child(5):after{top:50%;left:-5px;transform:translateY(-50%) rotate(45deg);border-bottom:none;border-left:none}
+.bubble-trait:nth-child(6){bottom:10%;left:20%;animation-delay:2s}
+.bubble-trait:nth-child(6):after{top:-5px;left:50%;transform:translateX(-50%) rotate(45deg);border-bottom:none;border-left:none}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+
+/* 手机框 */
+.phone-section{display:flex;justify-content:center}
+.phone-frame{
+  width:280px;
+  background:#fff;
+  border:2px solid #1a1a1a;
+  border-radius:32px;
+  padding:12px;
+  box-shadow:4px 6px 0 rgba(0,0,0,.1);
+  position:relative;
+}
+.phone-frame:before{
+  content:"";position:absolute;top:8px;left:50%;transform:translateX(-50%);
+  width:60px;height:6px;background:#1a1a1a;border-radius:999px;
+}
+.phone-screen{
+  background:#fafafa;
+  border-radius:24px;
+  padding:40px 20px 24px;
+  min-height:420px;
+}
+.phone-content h3{
+  font-size:15px;font-weight:600;margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.phone-content h3:before{
+  content:"";width:8px;height:8px;background:#1a1a1a;border-radius:50%;
+}
+.phone-content .chips{display:flex;flex-wrap:wrap;gap:8px}
+.phone-content .chips span{
+  font-size:12px;padding:6px 12px;border:1px solid #e5e5e5;border-radius:999px;color:#555;
+}
+
+.card{border:1px solid #f0f0f0;border-radius:12px;padding:32px}
+.card h3{font-size:16px;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px}
+.card h3 .dot{width:8px;height:8px;border-radius:50%;background:#1a1a1a}
+.mbti{display:flex;align-items:center;gap:20px;margin-bottom:24px}
+.mbti .code{font-size:40px;font-weight:700;color:#1a1a1a}
+.mbti .tx b{display:block;font-size:15px;margin-bottom:4px}
+.mbti .tx span{font-size:13px;color:#666}
+.traits{display:grid;gap:16px}
+.traits .t{display:flex;gap:12px;align-items:flex-start}
+.traits .t .ic{font-size:14px;color:#1a1a1a;flex:none;margin-top:2px}
+.traits .t b{font-size:14px;display:block;margin-bottom:4px}
+.traits .t p{font-size:13px;color:#666}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:12px;padding:6px 12px;border:1px solid #e8e8e8;border-radius:999px;color:#555}
+
+/* ---------- fame ---------- */
+.fame{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+@media(max-width:768px){.fame{grid-template-columns:repeat(2,1fr)}}
+.fame-item{
+  border:1px solid #f0f0f0;border-radius:12px;padding:20px;text-align:center;
+  position:relative;
+}
+.fame-item:before{
+  content:"";position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  width:40px;height:20px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 20'%3E%3Cellipse cx='20' cy='10' rx='18' ry='8' fill='none' stroke='%231a1a1a' stroke-width='1' opacity='.2'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;
+}
+.fame-item b{display:block;font-size:28px;font-weight:700;margin-bottom:6px}
+.fame-item small{font-size:12px;color:#888}
+
+/* ---------- did ---------- */
+.did{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:40px}
+@media(max-width:960px){.did{grid-template-columns:repeat(2,1fr)}}
+.did-item{
+  border-left:2px solid #1a1a1a;padding-left:14px;position:relative;
+}
+.did-item:before{
+  content:"";position:absolute;left:-5px;top:0;width:8px;height:8px;border-radius:50%;
+  background:#1a1a1a;opacity:.15;
+}
+.did-item h4{font-size:15px;font-weight:600;margin-bottom:6px}
+.did-item p{font-size:13px;color:#666}
+
+/* ---------- flow ---------- */
+.flowline{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:16px}
+.flowline .node{
+  font-size:14px;padding:10px 16px;
+  border:1.5px solid #1a1a1a;border-radius:999px;
+  background:#fff;
+  box-shadow:2px 2px 0 rgba(0,0,0,.06);
+}
+.flowline .plus{
+  font-size:18px;color:#ccc;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M10 4 L 10 16 M 4 10 L 16 10' fill='none' stroke='%23ccc' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size:contain;background-repeat:no-repeat;width:18px;height:18px;
+}
+.note{font-size:13px;color:#666;text-align:center;max-width:640px;margin:0 auto}
+
+/* ---------- daren ---------- */
+.darens{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px}
+@media(max-width:960px){.darens{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.darens{grid-template-columns:1fr}}
+.daren-card{border:1px solid #f0f0f0;border-radius:12px;overflow:hidden;transition:all .2s}
+.daren-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.dc-cover{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#f8f8f8}
+.dc-cover img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.daren-card:hover .dc-cover img{transform:scale(1.03)}
+.dc-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px}
+.dc-body{padding:20px}
+.dc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.dc-top h4{font-size:17px;font-weight:600}
+.dc-fans{font-size:11px;color:#888}
+.dc-title{font-size:13px;color:#666;margin-bottom:14px}
+.dc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding-top:14px;border-top:1px solid #f5f5f5;text-align:center}
+.dc-stats span{font-size:10px;color:#999}
+.dc-stats b{display:block;font-size:15px;font-weight:600;color:#1a1a1a;margin-bottom:2px}
+.dc-note{margin-top:14px;font-size:12px;color:#666}
+.dc-note.hide{display:none}
+.src{font-size:11px;color:#999;text-align:center;margin-top:24px}
+
+/* ---------- work ---------- */
+.works{display:grid;gap:24px}
+.work{display:grid;grid-template-columns:260px 1fr;gap:28px;border:1px solid #f0f0f0;border-radius:12px;padding:24px}
+@media(max-width:768px){.work{grid-template-columns:1fr}}
+.work video{width:100%;border-radius:8px;background:#000;display:block}
+.work .cat{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.work .cat h3{font-size:22px;font-weight:600}
+.chip{font-size:11px;padding:4px 10px;border:1px solid #e5e5e5;border-radius:999px;color:#666}
+.chip.model{border-color:#1a1a1a;color:#1a1a1a}
+.work .desc{font-size:13px;color:#666;margin-top:4px}
+.work .kw{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.work .kw span{font-size:11px;padding:4px 10px;background:#f8f8f8;border-radius:999px;color:#666}
+.result{margin-top:18px;padding-top:18px;border-top:1px solid #f5f5f5}
+.result .rt{font-size:10px;letter-spacing:.15em;color:#999;text-transform:uppercase;margin-bottom:12px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:620px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{border:1px solid #f0f0f0;border-radius:8px;padding:12px}
+.kpi b{display:block;font-size:18px;font-weight:600;margin-bottom:4px}
+.kpi small{font-size:10px;color:#999}
+.topline{margin-top:12px;font-size:12px;color:#666}
+.topline b{color:#1a1a1a}
+.empty{font-size:12px;color:#999;background:#fafafa;border:1px dashed #e8e8e8;border-radius:8px;padding:12px}
+
+/* ---------- skill ---------- */
+.mods{display:grid;gap:12px}
+.mod{border:1px solid #f0f0f0;border-radius:10px;overflow:hidden}
+.mod summary{cursor:pointer;list-style:none;padding:18px 22px;display:flex;align-items:center;gap:12px;font-size:16px;font-weight:500;user-select:none}
+.mod summary::-webkit-details-marker{display:none}
+.mod summary .en{font-size:10px;color:#999;margin-left:auto;text-transform:uppercase;letter-spacing:.05em}
+.mod summary .mk{font-size:18px;color:#ccc;transition:transform .2s}
+.mod[open] summary .mk{transform:rotate(45deg)}
+.mod .body{padding:0 22px 22px;border-top:1px solid #f5f5f5}
+.mod .body .line{display:grid;grid-template-columns:80px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid #f8f8f8}
+.mod .body .line:last-of-type{border-bottom:none}
+.mod .body .line .k{font-size:10px;letter-spacing:.1em;color:#999;text-transform:uppercase;padding-top:3px}
+.mod .body .line .v{font-size:13px;color:#555}
+
+/* ---------- tabs ---------- */
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:24px}
+.tab{cursor:pointer;font-size:14px;padding:8px 18px;border:1px solid #e5e5e5;border-radius:999px;color:#666;transition:all .2s}
+.tab.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.panel{display:none;border:1px solid #f0f0f0;border-radius:12px;padding:32px}
+.panel.on{display:block}
+.panel .lead{font-size:14px;color:#666;text-align:center;margin-bottom:24px}
+.panel .cols{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+@media(max-width:768px){.panel .cols{grid-template-columns:1fr}}
+.panel .cols h5{font-size:14px;font-weight:600;margin-bottom:12px}
+.panel .cols ul{list-style:none}
+.panel .cols li{font-size:13px;color:#555;padding-left:16px;position:relative;margin-bottom:8px}
+.panel .cols li:before{content:"·";position:absolute;left:0;color:#1a1a1a}
+.panel .cols li b{color:#1a1a1a}
+
+footer{padding:48px 0;text-align:center;border-top:1px solid #f0f0f0;margin-top:60px}
+footer b{font-weight:500}
+footer span{font-size:12px;color:#999}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="bar">
+    <div class="brand">营销作品集</div>
+    <ul>
+      <li><a href="#home">首页</a></li>
+      <li><a href="#intro">个人介绍</a></li>
+      <li><a href="#daren">达人营销</a></li>
+      <li><a href="#video">AI 营销</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= LANDING ================= -->
+<header class="hero" id="home">
+  <div class="wrap">
+    <div class="kicker">Portfolio · 2026</div>
+    <h1>营销作品集</h1>
+    <div class="sub">AIGC · 达人营销 · 工作流自动化</div>
+    <div class="chips">
+      <a href="#intro">个人介绍</a>
+      <a href="#daren">达人营销</a>
+      <a href="#video">AI 营销</a>
+    </div>
+
+    <!-- 手绘装饰星星 -->
+    <svg class="doodle" style="top:80px;right:15%;width:24px;height:24px;" viewBox="0 0 24 24" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity=".2">
+      <path d="M12 2 L 14 10 L 22 12 L 14 14 L 12 22 L 10 14 L 2 12 L 10 10 Z"/>
+    </svg>
+    <svg class="doodle" style="bottom:100px;left:10%;width:16px;height:16px;" viewBox="0 0 16 16" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity=".15">
+      <circle cx="8" cy="8" r="6"/>
+      <circle cx="8" cy="8" r="2" fill="#1a1a1a"/>
+    </svg>
+
+    <div class="landing">
+      <div class="photo">
+        <div class="polaroid">
+          <img src="assets/life.jpg" alt="生活照">
+          <span class="cap">南京大学 · Class of 2026</span>
+        </div>
+        <div class="badge">营销<br>创作者</div>
+        <!-- 手绘连接线 -->
+        <svg class="doodle" style="right:-60px;top:50%;width:50px;height:40px;" viewBox="0 0 50 40" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" opacity=".25">
+          <path d="M2 20 Q 15 10, 25 18 T 48 20"/>
+          <circle cx="48" cy="20" r="2" fill="#1a1a1a"/>
+        </svg>
+      </div>
+
+      <div class="branches">
+        <a class="branch" href="#intro">
+          <span class="no">01</span>
+          <span class="txt"><h3>个人介绍</h3><p>ENFJ · 热爱生活的营销创作者</p></span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="branch" href="#daren">
+          <span class="no">02</span>
+          <span class="txt"><h3>达人营销</h3><p>30 位 / 月 · ¥15 万预算 · 一桌多用</p></span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="branch" href="#video">
+          <span class="no">03</span>
+          <span class="txt"><h3>AI 营销</h3><p>4 类带货形式 · ¥19.9 万成交 · 6+ Skill</p></span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 个人介绍 ================= -->
+<section id="intro">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">01 / About Me</div>
+      <h2>个人介绍</h2>
+    </div>
+
+    <div class="intro-grid">
+      <!-- 左侧：虚拟形象 + 泡泡 -->
+      <div class="avatar-section">
+        <div class="avatar-wrapper">
+          <img src="assets/avatar.png" alt="虚拟形象" class="avatar-img">
+          
+          <!-- 衍生泡泡 -->
+          <div class="bubble bubble-name">
+            <span class="bubble-text">李雯茜</span>
+            <span class="bubble-pinyin">Lǐ Wénxī</span>
+          </div>
+          
+          <div class="bubble bubble-mbti">
+            <span class="bubble-label">MBTI</span>
+            <span class="bubble-value">ENFJ</span>
+          </div>
+          
+          <div class="bubble bubble-trait">
+            <span class="bubble-text">探索欲强</span>
+          </div>
+          
+          <div class="bubble bubble-trait">
+            <span class="bubble-text">积极主动</span>
+          </div>
+          
+          <div class="bubble bubble-trait">
+            <span class="bubble-text">善于连接</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右侧：手机框 -->
+      <div class="phone-section">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-content">
+              <h3>兴趣爱好</h3>
+              <div class="chips">
+                <span>游泳</span><span>手工</span><span>摄影</span>
+                <span>旅游</span><span>电影</span><span>阅读</span>
+                <span>彩妆</span><span>做饭</span>
+              </div>
+              
+              <h3 style="margin-top:28px">关键词</h3>
+              <div class="chips">
+                <span>达人营销</span><span>AIGC</span><span>内容营销</span>
+                <span>数据分析</span><span>沟通整合</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 达人营销 ================= -->
+<section id="daren">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">02 / KOL Marketing</div>
+      <h2>达人营销</h2>
+      <p>网易严选「任意桌」抖音内容营销 · 独立操盘月度达人合作矩阵</p>
+    </div>
+
+    <div class="fame">
+      <div class="fame-item">
+        <svg class="doodle" style="top:-18px;left:50%;transform:translateX(-50%);width:32px;height:16px;" viewBox="0 0 32 16" fill="none" stroke="#1a1a1a" stroke-width="1.2" opacity=".2">
+          <path d="M2 8 Q 8 2, 16 7 T 30 8"/>
+        </svg>
+        <b>30 位</b><small>月度合作达人</small>
+      </div>
+      <div class="fame-item">
+        <svg class="doodle" style="top:-18px;left:50%;transform:translateX(-50%);width:32px;height:16px;" viewBox="0 0 32 16" fill="none" stroke="#1a1a1a" stroke-width="1.2" opacity=".2">
+          <path d="M2 8 Q 8 2, 16 7 T 30 8"/>
+        </svg>
+        <b>¥15 万</b><small>月度合作总预算</small>
+      </div>
+      <div class="fame-item">
+        <svg class="doodle" style="top:-18px;left:50%;transform:translateX(-50%);width:32px;height:16px;" viewBox="0 0 32 16" fill="none" stroke="#1a1a1a" stroke-width="1.2" opacity=".2">
+          <path d="M2 8 Q 8 2, 16 7 T 30 8"/>
+        </svg>
+        <b>6 万+</b><small>3 条代表作累计点赞</small>
+      </div>
+      <div class="fame-item">
+        <svg class="doodle" style="top:-18px;left:50%;transform:translateX(-50%);width:32px;height:16px;" viewBox="0 0 32 16" fill="none" stroke="#1a1a1a" stroke-width="1.2" opacity=".2">
+          <path d="M2 8 Q 8 2, 16 7 T 30 8"/>
+        </svg>
+        <b>一桌多用</b><small>核心营销策略</small>
+      </div>
+    </div>
+
+    <div class="did">
+      <div class="did-item"><h4>预算分配</h4><p>¥15 万按月拆分，控制单条成本，平衡头部爆款与腰部铺量。</p></div>
+      <div class="did-item"><h4>选号</h4><p>按粉丝量级、内容调性、家居垂类契合度筛号，优选自带话题的账号。</p></div>
+      <div class="did-item"><h4>方向把控</h4><p>把「床边桌」改写成「任意桌」，用「一桌多用」统一内容方向。</p></div>
+      <div class="did-item"><h4>脚本共创</h4><p>与达人共创脚本、跟进拍摄剪辑，保证植入自然、卖点清晰。</p></div>
+    </div>
+
+    <div class="flowline">
+      <span class="node">达人原生高讨论度话题</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"><path d="M4 8 L 12 8 M 8 4 L 12 8 L 8 12"/></svg>
+      <span class="node">家居痛点</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#ccc" stroke-width="1.5" stroke-linecap="round"><path d="M4 8 L 12 8 M 8 4 L 12 8 L 8 12"/></svg>
+      <span class="node">多场景使用</span>
+    </div>
+    <p class="note">把「床边桌」重新定义为「任意桌」，用「一桌多用」承接达人的原生流量，从「卖桌子」升级为「卖一种更灵活的居家方式」。</p>
+
+    <div class="darens">
+      <article class="daren-card">
+        <a class="dc-cover" href="https://v.douyin.com/gjphvP4NJs4/" target="_blank" rel="noopener">
+          <img src="assets/daren-1-zunzun.jpg" alt="ZunZun 案例封面"><span class="dc-play">▶</span>
+        </a>
+        <div class="dc-body">
+          <div class="dc-top"><h4>ZunZun</h4><span class="dc-fans">5.3 万粉</span></div>
+          <p class="dc-title">精装房卧室改造 · 把床头换成任意桌</p>
+          <div class="dc-stats">
+            <span><b>3.8万</b>点赞</span><span><b>1083</b>评论</span><span><b>1.3万</b>收藏</span><span><b>6588</b>转发</span>
+          </div>
+          <p class="dc-note hide">以「精装房改造」高讨论度话题切入，在飘窗挤压、床头空间痛点中引出任意桌，可调高度、一桌多用。</p>
+        </div>
+      </article>
+
+      <article class="daren-card">
+        <a class="dc-cover" href="https://v.douyin.com/lMnqLEw5c0k/" target="_blank" rel="noopener">
+          <img src="assets/daren-2-taozi.jpg" alt="是桃子没错 案例封面"><span class="dc-play">▶</span>
+        </a>
+        <div class="dc-body">
+          <div class="dc-top"><h4>是桃子没错</h4><span class="dc-fans">5.3 万粉</span></div>
+          <p class="dc-title">小家越住越大的「邪修」改造</p>
+          <div class="dc-stats">
+            <span><b>1.2万</b>点赞</span><span><b>191</b>评论</span><span><b>6198</b>收藏</span><span><b>9367</b>转发</span>
+          </div>
+          <p class="dc-note hide">借「邪修」式小户型扩容话题制造记忆点，把任意桌作为空间解方，转发高于点赞，强传播性。</p>
+        </div>
+      </article>
+
+      <article class="daren-card">
+        <a class="dc-cover" href="https://v.douyin.com/2fjtdWsPd9k/" target="_blank" rel="noopener">
+          <img src="assets/daren-3-asure.jpg" alt="阿Sue小屋 案例封面"><span class="dc-play">▶</span>
+        </a>
+        <div class="dc-body">
+          <div class="dc-top"><h4>阿Sue小屋</h4><span class="dc-fans">8.3 万粉</span></div>
+          <p class="dc-title">一张桌子解锁 n 种用法</p>
+          <div class="dc-stats">
+            <span><b>1.0万</b>点赞</span><span><b>113</b>评论</span><span><b>3780</b>收藏</span><span><b>3288</b>转发</span>
+          </div>
+          <p class="dc-note hide">直接以「一桌多用」为内容主轴，多场景切换密集展示可用性，是床边桌改写为任意桌最直白的一条。</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="src">数据来源：抖音前端公开数据 · 达人量级为账号公开粉丝数</p>
+  </div>
+</section>
+
+<!-- ================= AI 营销 ================= -->
+<section id="video">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">03 / AI Marketing</div>
+      <h2>AI 营销</h2>
+      <p>用 AI 重构内容生产与投放复盘 · 每条素材都以千川真实数据验证</p>
+    </div>
+
+    <div class="works" style="margin-bottom:64px">
+      <article class="work">
+        <div><video src="assets/v1-live.mp4" poster="assets/poster-v1-live.jpg" controls muted playsinline preload="metadata"></video></div>
+        <div>
+          <div class="cat"><h3>Live 图</h3><span class="chip model">Wan 3.0</span><span class="chip">5.0s · 9:16</span></div>
+          <p class="desc">近景手部操作，乳液倾倒入描金玻璃碟，用「质地流淌」的 ASMR 长镜头呈现卖点。无露脸、无口播。</p>
+          <div class="kw"><span>ASMR 长镜头</span><span>氛围素材</span><span>封面级画面</span></div>
+          <div class="result"><div class="rt">投放结果</div><div class="empty">未进入投放 · 属能力验证 / 素材储备</div></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div><video src="assets/v2-desktop.mp4" poster="assets/poster-v2-desktop.jpg" controls muted playsinline preload="metadata"></video></div>
+        <div>
+          <div class="cat"><h3>桌拍</h3><span class="chip model">豆包 Seedance 2.0</span><span class="chip">5.6s · 9:16</span></div>
+          <p class="desc">牛皮纸袋开箱 → 发膜摆放 → 多罐堆叠，主打「你拍一罐我送一罐，到手整整一斤装」。</p>
+          <div class="kw"><span>买赠福利</span><span>大容量性价比</span><span>直接转化</span></div>
+          <div class="result">
+            <div class="rt">投放结果 · 牛皮纸袋系列 54 条</div>
+            <div class="kpis">
+              <div class="kpi"><b>¥141,839.61</b><small>累计成交</small></div>
+              <div class="kpi"><b>2.14</b><small>整体支付 ROI</small></div>
+              <div class="kpi"><b>¥66,389.71</b><small>累计消耗</small></div>
+              <div class="kpi"><b>54 条</b><small>系列素材</small></div>
+            </div>
+            <div class="topline">🏆 Top 单条：<b>一键修复_0820-牛皮纸袋一年一次</b> — 成交 ¥44,869.50</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div><video src="assets/v3-koc.mp4" poster="assets/poster-v3-koc.jpg" controls muted playsinline preload="metadata"></video></div>
+        <div>
+          <div class="cat"><h3>KOC</h3><span class="chip model">Wan 3.0</span><span class="chip">10.0s · 9:16</span></div>
+          <p class="desc">轻奢浴室场景，长发女性对镜顺摸发丝并口播，以「真人种草」语感展示发丝顺滑效果。</p>
+          <div class="kw"><span>真人种草语感</span><span>信任感</span><span>替代真人出镜</span></div>
+          <div class="result"><div class="rt">投放结果</div><div class="empty">验证以 AI 替代真人出镜实拍的可行性 · 暂无投放数据</div></div>
+        </div>
+      </article>
+
+      <article class="work">
+        <div><video src="assets/v4-story.mp4" poster="assets/poster-v4-story.jpg" controls muted playsinline preload="metadata"></video></div>
+        <div>
+          <div class="cat"><h3>剧情</h3><span class="chip model">豆包 Seedance</span><span class="chip">8.1s · 9:16</span></div>
+          <p class="desc">居家厨房剧情：女性翻炒小龙虾，人形机器人旁切彩椒、自然植入产品。把硬广包装成有情节的短剧。</p>
+          <div class="kw"><span>剧情场景</span><span>降低广告抗拒</span><span>自然植入</span></div>
+          <div class="result">
+            <div class="rt">投放结果 · 机器人系列 21 条</div>
+            <div class="kpis">
+              <div class="kpi"><b>¥57,988.60</b><small>累计成交</small></div>
+              <div class="kpi"><b>1.89</b><small>整体支付 ROI</small></div>
+              <div class="kpi"><b>¥30,729.69</b><small>累计消耗</small></div>
+              <div class="kpi"><b>21 条</b><small>系列素材</small></div>
+            </div>
+            <div class="topline">🏆 Top 单条：<b>0921-ai机器人中秋裂变接头发香水</b> — 成交 ¥44,388.30</div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="sec-head" style="margin-bottom:32px">
+      <div class="no">Workflow Skill</div>
+      <h2 style="font-size:clamp(28px,4vw,40px)">工作流 Skill</h2>
+      <p>把重复、易错、依赖个人经验的营销流程，沉淀为可复用的 AI Skill。点击展开。</p>
+    </div>
+
+    <div class="mods" style="margin-bottom:64px">
+      <details class="mod" open>
+        <summary>对标视频复刻裂变 <span class="en">video-recreate-fission</span><span class="mk">＋</span></summary>
+        <div class="body">
+          <div class="line"><div class="k">功能</div><div class="v">分析原视频前 15–17s，1:1 复刻结构并替换为自家产品，输出 JenVideo 中文 + 即梦 AI 英文双版本提示词，另带 5–8 套裂变变体与逐秒分镜口播。</div></div>
+          <div class="line"><div class="k">解决的问题</div><div class="v">竞品爆款想复刻却要人工拆画面、口播、分镜再写双语提示词，效率低、依赖个人经验、难标准化。</div></div>
+          <div class="line"><div class="k">节省的时间</div><div class="v">省去逐条手写文字提示词——只需提供几张参考图或原视频，即可快速生成复刻视频。</div></div>
+          <div class="line"><div class="k">技术链路</div><div class="v">Whisper 语音转写 → 要素拆解 → 提示词工程 → Seedance 2.0 / Kling / 即梦 AI</div></div>
+        </div>
+      </details>
+      <details class="mod">
+        <summary>KOC 口播视频生成 <span class="en">AI 口播复刻</span><span class="mk">＋</span></summary>
+        <div class="body">
+          <div class="line"><div class="k">功能</div><div class="v">复刻 KOC 口播种草视频：保留原片口播节奏与情绪递进，仅替换品类词，用 AI 生成「真人直面镜头种草」的带货视频。</div></div>
+          <div class="line"><div class="k">解决的问题</div><div class="v">真人 KOC 拍摄依赖达人与档期，成本高、周期长、难以批量产出与快速迭代。</div></div>
+          <div class="line"><div class="k">节省的时间</div><div class="v">省去真人出镜拍摄与逐条文字描述——给几张参考图或视频，即可快速产出成片。</div></div>
+          <div class="line"><div class="k">技术链路</div><div class="v">Whisper 口播转写 → 口播脚本重写 → Seedance 图生视频 → 口型对齐与后期配音</div></div>
+        </div>
+      </details>
+      <details class="mod">
+        <summary>产品替换 <span class="en">seedance2-product-replacement</span><span class="mk">＋</span></summary>
+        <div class="body">
+          <div class="line"><div class="k">功能</div><div class="v">用视频编辑模式替换指定区域的产品，手部动作 / 背景 / 光影像素级保留；支持分段替换与排列控制。</div></div>
+          <div class="line"><div class="k">解决的问题</div><div class="v">已有跑量视频想换成自家产品，重拍成本极高、周期长。</div></div>
+          <div class="line"><div class="k">节省的时间</div><div class="v">省去重拍重剪与文字描述，直接复用已验证的爆款结构。</div></div>
+          <div class="line"><div class="k">技术链路</div><div class="v">Seedance 2.0 多模态参考 + 参考图 + 提示词模板（内置坑位避雷）</div></div>
+        </div>
+      </details>
+      <details class="mod">
+        <summary>视频背景替换 <span class="en">video-background-replace</span><span class="mk">＋</span></summary>
+        <div class="body">
+          <div class="line"><div class="k">功能</div><div class="v">保留前景手部与产品展示，把背景替换为参考图场景。</div></div>
+          <div class="line"><div class="k">解决的问题</div><div class="v">拍摄场景不匹配、场地成本高、难以快速切换场景。</div></div>
+          <div class="line"><div class="k">节省的时间</div><div class="v">免去重新搭景拍摄，提供参考图即可快速替换场景。</div></div>
+          <div class="line"><div class="k">技术链路</div><div class="v">Seedance 2.0 品质版（doubao-seedance-2-0-260128），解决俯视 / 平视视角对齐</div></div>
+        </div>
+      </details>
+      <details class="mod">
+        <summary>千川 ROI 实时监控 <span class="en">qianchuan-roi-monitor</span><span class="mk">＋</span></summary>
+        <div class="body">
+          <div class="line"><div class="k">功能</div><div class="v">9:00–21:00 每 30 分钟自动检查两个账户整体支付 ROI，跌破阈值即触发预警。</div></div>
+          <div class="line"><div class="k">解决的问题</div><div class="v">投放 ROI 跌破阈值没人及时发现，等于持续烧钱；人工高频盯盘耗时且易漏。</div></div>
+          <div class="line"><div class="k">节省的时间</div><div class="v">替代人工全天盯盘，异常分钟级触达（含防刷屏机制）。</div></div>
+          <div class="line"><div class="k">技术链路</div><div class="v">浏览器自动化（千川后台）+ 状态机 + cron</div></div>
+        </div>
+      </details>
+      <details class="mod">
+        <summary>千川每日日报 <span class="en">qianchuan-daily-report</span><span class="mk">＋</span></summary>
+        <div class="body">
+          <div class="line"><div class="k">功能</div><div class="v">每天 10:00 定时自动抓取混剪 / KOC 两类业务数据，按模板生成日报并私发；另含每晚 18:30 自动更新飞书日报文档。</div></div>
+          <div class="line"><div class="k">解决的问题</div><div class="v">每天手工登录千川 → 筛选素材 → 抄数据 → 算 ROI → 排版，重复枯燥且易错。</div></div>
+          <div class="line"><div class="k">节省的时间</div><div class="v">每天约省 15 分钟，每周约 1 小时——抓取、计算与排版全部自动化。</div></div>
+          <div class="line"><div class="k">技术链路</div><div class="v">浏览器自动化（千川后台）+ 数据解析 + 模板引擎 + 飞书文档 API + cron</div></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="sec-head" style="margin-bottom:32px">
+      <div class="no">AI × Marketing</div>
+      <h2 style="font-size:clamp(28px,4vw,40px)">AI 如何辅助营销</h2>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" data-p="p1">市场调研</button>
+      <button class="tab" data-p="p2">创意生产</button>
+      <button class="tab" data-p="p3">数据复盘</button>
+    </div>
+
+    <div class="panel on" id="p1">
+      <p class="lead">用 AI 快速、及时地检测竞品动态与市场趋势，持续监测营销热点并自动推送热点日历，为选题提供及时参考。</p>
+      <div class="cols">
+        <div><h5>AI 怎么做</h5><ul>
+          <li>快速、及时检测竞品动态与市场动向</li>
+          <li>监测营销热点，及时推送热点日历</li>
+          <li>为选题、脚本等环节提供实时参考</li>
+        </ul></div>
+        <div><h5>带来的价值</h5><ul>
+          <li>市场感知从「事后复盘」提前到「实时捕捉」</li>
+          <li>热点不再错过，选题跟得上节奏</li>
+          <li>选题有实时数据支撑，不再凭感觉</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p2">
+      <p class="lead">AI 生成可替代 KOC 口播、桌拍等传统需要真人实拍的环节——不依赖达人、场地与拍摄团队，给几张图片或视频即可快速产出可投放素材。</p>
+      <div class="cols">
+        <div><h5>AI 怎么做</h5><ul>
+          <li><b>替代 KOC 实拍</b>：AI 生成口播视频，无需真人出镜</li>
+          <li><b>替代桌拍实拍</b>：AI 生成产品展示画面，无需搭景</li>
+          <li><b>低门槛输入</b>：给几张参考图或视频即可生成，省去文字描述</li>
+        </ul></div>
+        <div><h5>带来的价值</h5><ul>
+          <li>免去达人沟通、场地搭建与拍摄成本</li>
+          <li>一次输入可批量产出，出片速度大幅提升</li>
+          <li>已验证的创意结构可规模化复制</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="panel" id="p3">
+      <p class="lead">及时检测素材数据的走势与变化，自动识别有潜力的素材，同时把数据的整理与汇报自动化，省下大量人工时间。</p>
+      <div class="cols">
+        <div><h5>AI 怎么做</h5><ul>
+          <li>及时检测素材数据发展，捕捉走势变化</li>
+          <li>自动识别潜力素材，辅助加投决策</li>
+          <li>自动化数据整理与汇报（日报 / 周报）</li>
+        </ul></div>
+        <div><h5>带来的价值</h5><ul>
+          <li>潜力素材第一时间被发现，不错过加投窗口</li>
+          <li>数据整理与汇报的时间大幅节省</li>
+          <li>复盘结论直接反哺下一轮选题与创意</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <svg class="squiggle" style="margin-bottom:20px" width="120" height="16" viewBox="0 0 120 16" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round">
+      <path d="M4 8 Q 20 2, 40 7 T 80 8 T 116 8"/>
+    </svg>
+    <div><b>营销作品集</b> <span>· 数据来源：巨量千川投放后台 · 抖音前端公开数据 · 本页为求职展示用途</span></div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});
+    document.querySelectorAll('.panel').forEach(function(x){x.classList.remove('on')});
+    t.classList.add('active');
+    var el=document.getElementById(t.dataset.p);
+    if(el) el.classList.add('on');
+  });
+});
+document.querySelectorAll('.daren-card').forEach(function(c){
+  var note=c.querySelector('.dc-note');
+  if(!note) return;
+  note.classList.add('hide');
+  c.addEventListener('click',function(e){
+    if(e.target.closest('a')) return;
+    note.classList.toggle('hide');
+  });
+});
+</script>
+</body>
+</html>
